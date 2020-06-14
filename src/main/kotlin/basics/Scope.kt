@@ -12,7 +12,7 @@ fun main() {
             println("Task from runBlocking")
         }
 
-        GlobalScope.launch {
+        GlobalScope.launch(Dispatchers.Main) {
             delay(500)
             println("Task from GlobalScope")
         }

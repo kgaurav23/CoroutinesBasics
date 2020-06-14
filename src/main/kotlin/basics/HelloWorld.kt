@@ -1,16 +1,24 @@
 package basics
 
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.delay
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
 
 fun main() {
 
-    GlobalScope.launch {
-        delay(1000)
-        println("World!")
-    }
+runBlocking {
+    CoroutineScope(Dispatchers.IO).launch {
+        println("Thread1: ${Thread.currentThread().name}")
+        launch {
+            println("Thread2: ${Thread.currentThread().name}")
 
-    print("Hello, ")
-    Thread.sleep(2000)
+            launch {
+                println("Thread3: ${Thread.currentThread().name}")
+
+            }
+        }
+    }
+}
+
 }

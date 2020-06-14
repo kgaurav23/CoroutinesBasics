@@ -1,5 +1,6 @@
 package basics
 
+import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
@@ -9,7 +10,7 @@ fun main() {
 
     runBlocking {
 
-        val job1 = launch {
+        val job1: Job = launch {
             //delay(3000)
             println("Job1 launched")
 
